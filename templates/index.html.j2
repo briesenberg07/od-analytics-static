@@ -8,9 +8,9 @@
 <body>
   <h1>Oregon Digital analytics data</h1>
   <ul>
-  
-    <li><a href="uo-athletics.html">uo-athletics</a></li>
-  
+  {% for name, filename in files %}
+    <li><a href="{{ filename }}">{{ name }}</a></li>
+  {% endfor %}
   </ul>
 </body>
 </html>

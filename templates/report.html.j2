@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ name }}</title>
+</head>
+<body>
+  <h1>{{ name }}</h1>
+
+  {% for top_key in data|dictsort %}
+    {% set key = top_key[0] %}
+    {% set top_value = top_key[1] %}
+    <h2>{{ key }}</h2>
+    <p>{{ top_value.get('total', '') }} {{ top_value.get('details', '') }}</p>
+
+    {% for sub_key in top_value|dictsort %}
+      {% set sk = sub_key[0] %}
+      {% set sv = sub_key[1] %}
+      {% if sk not in ['total', 'details'] %}
+        <h3>{{ sk }}</h3>
+        <p>{{ sv.get('total', '') }} {{ sv.get('details', '') }}</p>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+</body>
+</html>
