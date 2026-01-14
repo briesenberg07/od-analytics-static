@@ -48,14 +48,15 @@ def ensure_templates():
     {% set top_value = top_key[1] %}
     <h2>{{ key }}</h2>
     <p>{{ top_value.get('total','') }} {{ top_value.get('details','') }}</p>
+    <ul>
     {% for sub_key in top_value|dictsort %}
       {% set sk = sub_key[0] %}
       {% set sv = sub_key[1] %}
-      {% if sk not in ['total','details'] %}
-        <h3>{{ sk }}</h3>
-        <p>{{ sv.get('total','') }} {{ sv.get('details','') }}</p>
+      {% if sk not in ['total','details'] and sk|length == 6 %}
+        <li>{{ sk }}: {{ sv.get('total','') }} {{ sv.get('details','') }}</li>
       {% endif %}
     {% endfor %}
+    </ul>
   {% endfor %}
 </body>
 </html>""")
