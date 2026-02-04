@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Generate HTML reports from JSON files using Jinja2 templates.
-
+"""
+Generate HTML reports from JSON files using Jinja2 templates.
 Writes per-file HTML files into docs/ (one per JSON file in data/)
 and creates docs/index.html linking to them.
 """

@@ -4,7 +4,7 @@ from os import listdir
 from pathlib import Path
 import pandas as pd
 
-message = "run script as:\n$ python3 count_dls.py [collection ID] [home|office]"
+message = "run script as:\n$ python[3 if home] count_dls.py [collection ID] [home|office]"
 
 try:
     coll_id = argv[1].strip()
@@ -56,9 +56,16 @@ for csv in exports:
             "details": f"from {start} to {end}"
             }})
     elif len(date) == 6:
-        data[date[0:4]].update({date: {
-            "total": count,
-            "details": f"from {start} to {end}"
-        }})    
+        if date[0:4] in data:
+            data[date[0:4]].update({date: {
+                "total": count,
+                "details": f"from {start} to {end}"
+            }})
+        else:
+            data.update({date[0:4]: {
+                date: {
+                    "total": count,
+                    "details": f"from {start} to {end}"
+                }}})
     with open(f"data/{coll_id}.json", "w") as jf:
         json.dump(data, jf, indent=4)
