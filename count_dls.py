@@ -16,9 +16,9 @@ if work_loc not in ["home", "office"]:
     print(message)
     exit(0)
 elif work_loc == "home":
-    dir = "/home/nebgreb/Dropbox/work_dropbox/ga4"
+    dir = "/home/nebgreb/Dropbox/work_dropbox/od-ga4"
 elif work_loc == "office":
-    dir = "C:/Users/briesenb/University of Oregon Dropbox/Benjamin Riesenberg/ga4"
+    dir = "C:/Users/briesenb/University of Oregon Dropbox/Benjamin Riesenberg/od-ga4"
 
 solrbase = "https://solr-od2.library.oregonstate.edu/solr/prod/"
 select = f"{solrbase}select?fl=id&q=member_of_collection_ids_ssim%3A{coll_id}&rows=100000"
